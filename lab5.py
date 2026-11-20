@@ -9,31 +9,25 @@ class CandyType(Enum):
 
 
 class Candy:
-
-    count = 0
-
     def __init__(self, name, mass, amount, price, candy_type):
+        self._name = ""
+        self._mass = 0
+        self._amount = 0
+        self._price = 0
+        self._candy_type = None
+
         self.name = name
         self.mass = mass
         self.amount = amount
         self.price = price
         self.candy_type = candy_type
 
-
-
-
     def __del__(self):
         print(f"Candy '{self._name}' was deleted")
 
-
-    @staticmethod
-    def grams(gram):
-        return gram/1000
-
     @property
     def name(self):
-        return  f"self._name: {Candy.grams(2500)}"
-
+        return self._name
 
     @name.setter
     def name(self, value):
@@ -81,9 +75,9 @@ class Candy:
         self._candy_type = value
 
     def ate(self):
-        if self._mass * self._amount > 2000:
-            return f"{self._name}: You’re on a diet!"
-        return f"{self._name}: What delicious candies!"
+        if self.mass * self.amount > 2000:
+            return f"{self.name}: You’re on a diet!"
+        return f"{self.name}: What delicious candies!"
 
     def show_info(self):
         print(f"{self.name} ({self.candy_type.value}): "
@@ -103,6 +97,8 @@ def find_the_most_expensive_candies(candies, name=None):
 
 class Dinner:
     def __init__(self, day, time):
+        self._day = ""
+        self._time = ""
         self.day = day
         self.time = time
         self._candies = []
@@ -187,7 +183,5 @@ def main():
     milka.show_info()
 
 
-
 if __name__ == "__main__":
     main()
-
