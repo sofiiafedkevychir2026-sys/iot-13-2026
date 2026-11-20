@@ -86,6 +86,8 @@ class Candy:
 
 
 def find_the_most_expensive_candies(candies, name=None):
+    matching = (item for item in candies if name is None or item.name == name)
+    return sorted(matching, key=lambda item: item.price, reverse=True)[:3]
     filtered = []
     for candy in candies:
         if name is None or candy.name == name:
